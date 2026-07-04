@@ -6,11 +6,14 @@ import Image from 'next/image';
 const AuthPage = () => {
   return (
     <div className='flex'>
-      <div className='hidden lg:block lg:w-1/2 h-screen overflow-hidden'>
+      <div className='hidden lg:block lg:w-1/2 h-screen overflow-hidden relative'>
         <Image
           src={authImage}
           alt='burger on the tray'
-          className='size-full object-cover object-bottom'
+          loading='eager'
+          fill
+          sizes='(max-width: 1023px) 0vw, 50vw'
+          className='object-cover object-bottom'
         />
       </div>
       <div className='flex justify-center items-center lg:w-1/2 px-3xl py-8 min-h-screen w-full'>

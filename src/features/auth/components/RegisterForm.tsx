@@ -6,6 +6,8 @@ import InputField from './ui/InputField';
 import { Button } from '@/components/ui/button';
 import { motion } from 'motion/react';
 import { fadeIn } from '@/motions';
+import { useRouter } from 'next/navigation';
+import { useRegister } from '../hooks/useRegister';
 
 const RegisterForm = () => {
   const {
@@ -23,10 +25,13 @@ const RegisterForm = () => {
     },
     resolver: zodResolver(registerSchema),
   });
+  const { mutate, isPending } = useRegister();
+  const router = useRouter();
 
   const onSubmit = (data: RegisterSchema) => {
-    console.log(data);
+    mutate(data);
     reset();
+    router.push('/');
   };
 
   return (
@@ -76,8 +81,9 @@ const RegisterForm = () => {
         type='password'
         errorMessage={errors.confirmPassword?.message}
       />
-      <Button disabled={isSubmitting}>
-        {isSubmitting ? 'Loading...' : 'Register'}
+
+      <Button disabled={isPending}>
+        {isPending ? 'Loading...' : 'Register'}
       </Button>
     </motion.form>
   );
