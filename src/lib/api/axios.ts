@@ -1,3 +1,4 @@
+import { authStore } from '@/store/auth-store';
 import axios from 'axios';
 
 export const api = axios.create({
@@ -8,7 +9,7 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
+  const token = authStore.getState().token;
   if (token) config.headers.Authorization = `Bearer ${token}`;
 
   return config;

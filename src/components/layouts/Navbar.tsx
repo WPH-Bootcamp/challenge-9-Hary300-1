@@ -11,6 +11,8 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const router = useRouter();
 
+  const { hasHydrated, token } = authStore();
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -27,7 +29,9 @@ const Navbar = () => {
 
   const useLightNavbar = !isHomePage || isScrolled;
 
-  const token = authStore((state) => state.token);
+  if (!hasHydrated) {
+    return null;
+  }
 
   const handleSignInClick = () => {
     router.push('/auth?tab=signIn');
@@ -39,7 +43,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`sticky top-0 px-4 lg:px-30 h-[64px] lg:h-20 flex justify-between w-full max-w-360 mx-auto z-20 ${useLightNavbar ? 'bg-white' : 'bg-transparent'}`}
+      className={`sticky top-0 px-4 lg:px-30 h-[64px] lg:h-20 flex justify-between w-full  z-20 ${useLightNavbar ? 'bg-white' : 'bg-transparent'}`}
     >
       <Logo useLightNavbar={useLightNavbar} />
       {token ? (
