@@ -7,6 +7,7 @@ const HomeHeroSection = () => {
         <Image
           src={heroImage}
           alt='burger image'
+          loading='eager'
           fill
           className='object-cover object-center'
         />

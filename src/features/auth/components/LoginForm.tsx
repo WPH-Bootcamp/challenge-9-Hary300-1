@@ -18,7 +18,7 @@ const LoginForm = () => {
     reset,
     control,
     setValue,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<LoginSchema>({
     defaultValues: {
       email: '',
@@ -50,9 +50,12 @@ const LoginForm = () => {
       localStorage.removeItem('email');
       localStorage.removeItem('rememberMe');
     }
-    mutate(payload);
-    reset();
-    router.push('/');
+    mutate(payload, {
+      onSuccess: () => {
+        reset();
+        router.push('/');
+      },
+    });
   };
 
   return (

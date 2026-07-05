@@ -1,9 +1,18 @@
+'use client';
 import authImage from '@/assets/images/auth-image.png';
 import Logo from '@/components/shared/Logo';
 import AuthTabs from '@/features/auth/components/AuthTabs';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
+
+type Tab = 'signIn' | 'signUp';
 
 const AuthPage = () => {
+  const searchParams = useSearchParams();
+  const tabParam = searchParams.get('tab');
+
+  const tab: Tab = tabParam === 'signUp' ? 'signUp' : 'signIn';
+
   return (
     <div className='flex'>
       <div className='hidden lg:block lg:w-1/2 h-screen overflow-hidden relative'>
@@ -25,7 +34,7 @@ const AuthPage = () => {
           <p className='font-medium text-sm lg:text-md'>
             Good to see you again! Let’s eat
           </p>
-          <AuthTabs />
+          <AuthTabs value={tab} />
         </div>
       </div>
     </div>

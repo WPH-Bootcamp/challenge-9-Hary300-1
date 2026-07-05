@@ -14,7 +14,7 @@ const RegisterForm = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<RegisterSchema>({
     defaultValues: {
       name: '',
@@ -29,9 +29,12 @@ const RegisterForm = () => {
   const router = useRouter();
 
   const onSubmit = (data: RegisterSchema) => {
-    mutate(data);
-    reset();
-    router.push('/');
+    mutate(data, {
+      onSuccess: () => {
+        reset();
+        router.push('/auth?tab=signIn');
+      },
+    });
   };
 
   return (
