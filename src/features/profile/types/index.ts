@@ -1,3 +1,9 @@
+export type UpdateProfilePayload = {
+  name?: string;
+  email?: string;
+  phone?: string;
+};
+
 export type Profile = {
   id: number;
   name: string;

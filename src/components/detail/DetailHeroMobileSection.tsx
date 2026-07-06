@@ -28,7 +28,7 @@ const DetailHeroCarousel = ({ images }: { images: string[] }) => {
   }, [api]);
 
   return (
-    <div className='lg:hidden flex flex-col gap-3 pt-4'>
+    <section id='hero-mobile' className='lg:hidden flex flex-col gap-3 pt-4'>
       <Carousel setApi={setApi} className='w-full'>
         <CarouselContent>
           {images.map((image, index) => (
@@ -48,7 +48,7 @@ const DetailHeroCarousel = ({ images }: { images: string[] }) => {
         </CarouselContent>
       </Carousel>
       <DotIndicator count={count} api={api} current={current} />
-    </div>
+    </section>
   );
 };
 

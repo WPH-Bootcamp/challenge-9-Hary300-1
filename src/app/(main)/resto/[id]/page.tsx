@@ -1,6 +1,8 @@
 'use client';
-import DetailHeroCarousel from '@/components/detail/DetailHeroMobile';
+import DetailHeroCarousel from '@/components/detail/DetailHeroMobileSection';
 import DetailHeroSection from '@/components/detail/DetailHeroSection';
+import MenuSection from '@/components/detail/MenuSection';
+import ReviewSection from '@/components/detail/ReviewSection';
 import { useRestaurantDetail } from '@/features/restaurant/hook/useRestaurantDetail';
 import { useParams } from 'next/navigation';
 
@@ -19,7 +21,7 @@ const RestaurantDetailPage = () => {
     console.log('No data');
     return null;
   }
-  
+
   const restaurantDetail = detailResponse.data;
 
   return (
@@ -27,10 +29,9 @@ const RestaurantDetailPage = () => {
       <DetailHeroCarousel images={restaurantDetail.images} />
       <DetailHeroSection restaurantDetail={restaurantDetail} />
       <div className='h-0.5 w-full bg-neutral-300' />
-      <div className='pt-4'>
-        
-
-      </div>
+      <MenuSection menus={restaurantDetail.menus} />
+      <div className='h-0.5 w-full bg-neutral-300' />
+      <ReviewSection reviews={restaurantDetail.reviews} />
     </div>
   );
 };

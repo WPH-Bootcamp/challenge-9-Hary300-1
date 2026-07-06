@@ -68,16 +68,18 @@ const DetailHeroSection = ({
             </div>
 
             <div>
-              <p className='font-bold text-md lg:text-lg cursor-pointer'>
+              <p className='font-extrabold text-md lg:text-display-md'>
                 {restaurantDetail.name}
               </p>
-              <div className='flex gap-0.5 lg:gap-1'>
+              <div className='flex gap-0.5 lg:gap-1 items-center'>
                 <Star className='text-[#FFAB0D] fill-[#FFAB0D] size-6' />
-                <p className='font-medium text-sm lg:text-md'>
+                <p className='font-medium text-sm lg:font-semibold lg:text-lg'>
                   {restaurantDetail.star}
                 </p>
               </div>
-              <p className='text-sm lg:text-md'>{restaurantDetail.place}</p>
+              <p className='lg:font-medium text-sm lg:text-lg'>
+                {restaurantDetail.place}
+              </p>
             </div>
           </div>
 

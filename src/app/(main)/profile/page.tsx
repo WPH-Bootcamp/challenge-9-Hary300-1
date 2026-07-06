@@ -2,9 +2,19 @@
 import ProfileContent from '@/components/profile/ProfileContentSection';
 import ProfileSideBar from '@/components/profile/ProfileSideBarSection';
 import { useProfile } from '@/features/profile/hook/useProfile';
+import { authStore } from '@/store/auth-store';
+import { useRouter } from 'next/navigation';
 
 const ProfilePage = () => {
   const { data: profileResponse, isLoading, error } = useProfile();
+  const token = authStore((state) => state.token);
+  const router = useRouter();
+
+  if (!token) {
+    router.push('/auth?tab=signIn');
+    return null;
+  }
+
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>{error.message}</p>;
   if (!profileResponse) return null;
