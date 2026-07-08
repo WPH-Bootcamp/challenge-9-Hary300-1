@@ -1,9 +1,6 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import {
-  addOrderCheckout,
-  getMyOrder,
-  GetMyOrderParams,
-} from '../service/checkout.service';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { addOrderCheckout } from '../service/checkout.service';
+import { GetMyOrderParams } from '../service/myOrders.service';
 
 export const checkoutKeys = {
   all: ['checkout'] as const,
@@ -21,12 +18,5 @@ export const useAddOrderCheckout = () => {
         queryKey: checkoutKeys.all,
       });
     },
-  });
-};
-
-export const useGetMyOrderCheckout = (params: GetMyOrderParams) => {
-  return useQuery({
-    queryKey: checkoutKeys.myOrders(params),
-    queryFn: () => getMyOrder(params),
   });
 };

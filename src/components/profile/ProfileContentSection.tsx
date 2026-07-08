@@ -1,9 +1,9 @@
-import { Profile } from '@/features/profile/types';
 import Image from 'next/image';
 import avatar from '@/assets/icons/avatar-icon.svg';
 import { Button } from '../ui/button';
+import { ProfileData } from '@/features/profile/types';
 
-const ProfileContent = ({ profileData }: { profileData: Profile }) => {
+const ProfileContent = ({ profileData }: { profileData: ProfileData }) => {
   const profileContent = [
     {
       id: 1,
@@ -30,7 +30,7 @@ const ProfileContent = ({ profileData }: { profileData: Profile }) => {
       <h1 className='font-extrabold text-display-xs lg:text-display-md'>
         Profile
       </h1>
-      <div className='flex flex-col gap-6 rounded-2xl p-4 w-full max-w-131 bg-white shadow-[0_0_20px_0_#CBCACA40]'>
+      <div className='flex flex-col gap-6 rounded-2xl p-4 w-full lg:max-w-131 bg-white shadow-[0_0_20px_0_#CBCACA40]'>
         <div className='relative size-[64px]'>
           <Image
             src={avatar}

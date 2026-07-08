@@ -1,19 +1,6 @@
-import { api } from '@/lib/api/axios';
-import {
-  CheckoutPayload,
-  GetMyOrdersData,
-  TransactionData,
-  TransactionStatus,
-} from '../types';
 import { ApiResponse } from '@/types/api.type';
-
-export const addOrderCheckout = async (payload: CheckoutPayload) => {
-  const { data } = await api.post<ApiResponse<TransactionData>>(
-    '/order/checkout',
-    payload
-  );
-  return data;
-};
+import { GetMyOrdersData, TransactionStatus } from '../types';
+import { api } from '@/lib/api/axios';
 
 export type GetMyOrderParams = {
   status?: TransactionStatus;

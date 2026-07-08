@@ -3,7 +3,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Controller, useFormContext } from 'react-hook-form';
 import { Label } from '../ui/label';
 import Image from 'next/image';
-import { CheckoutForm } from '@/features/checkout/schema/checkoutSchema';
+import { CheckoutForm } from '@/features/order/schema/checkoutSchema';
 
 const PaymentMethod = () => {
   const { control } = useFormContext<CheckoutForm>();

@@ -14,24 +14,9 @@ const MenuTabs = ({
   return (
     <Tabs defaultValue='all-menu' className='flex flex-col gap-4 lg:gap-6'>
       <TabsList className='flex gap-2 bg-transparent'>
-        <TabsTrigger
-          value='all-menu'
-          className='rounded-full border data-active:bg-[#FFECEC] data-active:border-primary-100 data-active:text-primary-100 text-semibold data-active:font-bold'
-        >
-          All Menu
-        </TabsTrigger>
-        <TabsTrigger
-          value='food'
-          className='rounded-full border data-active:bg-[#FFECEC] data-active:border-primary-100 data-active:text-primary-100 text-semibold data-active:font-bold'
-        >
-          Food
-        </TabsTrigger>
-        <TabsTrigger
-          value='drink'
-          className='rounded-full border data-active:bg-[#FFECEC] data-active:border-primary-100 data-active:text-primary-100 text-semibold data-active:font-bold'
-        >
-          Drink
-        </TabsTrigger>
+        <TabsTrigger value='all-menu'>All Menu</TabsTrigger>
+        <TabsTrigger value='food'>Food</TabsTrigger>
+        <TabsTrigger value='drink'>Drink</TabsTrigger>
       </TabsList>
       <TabsContent value='all-menu'>
         <MenuGrid restaurantId={restaurantId} menus={menus} />

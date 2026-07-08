@@ -4,7 +4,7 @@ import DetailHeroSection from '@/components/detail/DetailHeroSection';
 import MenuSection from '@/components/detail/MenuSection';
 import ReviewSection from '@/components/detail/ReviewSection';
 import { useRestaurantDetail } from '@/features/restaurant/hook/useRestaurantDetail';
-import Loading from '@/loading/Loading';
+import Loading from '@/components/shared/Loading';
 import { useParams } from 'next/navigation';
 
 const RestaurantDetailPage = () => {

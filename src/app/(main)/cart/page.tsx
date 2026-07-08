@@ -1,7 +1,7 @@
 'use client';
 import CartList from '@/components/cart/CartList';
 import { useGetItemsCart } from '@/features/cart/hook/useCart';
-import Loading from '@/loading/Loading';
+import Loading from '@/components/shared/Loading';
 
 const CartPage = () => {
   const { data: cartResponse, isLoading, error } = useGetItemsCart();

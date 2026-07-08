@@ -3,7 +3,7 @@ import Logo from '@/components/shared/Logo';
 import Image from 'next/image';
 import successIcon from '@/assets/icons/success-icon.svg';
 import { useQueryClient } from '@tanstack/react-query';
-import { Order } from '@/features/checkout/types';
+import { Order } from '@/features/order/types';
 import DashedLine from '@/components/shared/DashedLine';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
@@ -17,7 +17,7 @@ const SuccessPage = () => {
 
   useEffect(() => {
     if (!transaction) {
-      router.replace('/orders');
+      router.replace('/profile?page=orders');
     }
   }, [transaction, router]);
 
@@ -65,12 +65,12 @@ const SuccessPage = () => {
   ];
 
   const handleSeeMyOrderClick = () => {
-    router.replace('/orders');
+    router.replace('/profile?page=orders');
   };
 
   return (
     <div className='bg-neutral-50 h-screen flex justify-center items-center px-4 lg:px-30'>
-      <div className='max-w-107 mx-auto w-full flex flex-col items-center lg:gap-7'>
+      <div className='max-w-107 mx-auto w-full flex flex-col items-center'>
         <Logo logoColor='red' textColor='dark' stayVisibleText />
 
         <div className='rounded-t-2xl bg-white shadow-[0_0_20px_0_#CBCACA40] p-4 flex flex-col items-center gap-4 lg:p-5 mt-7 w-full'>

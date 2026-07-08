@@ -1,20 +1,23 @@
 'use client';
 
-import { useGetItemsCart } from '@/features/cart/hook/useCart';
+import {
+  useDeleteAllItemsCart,
+  useGetItemsCart,
+} from '@/features/cart/hook/useCart';
 import CartList from '@/components/cart/CartList';
 import { FormProvider, useForm } from 'react-hook-form';
 import {
   CheckoutForm,
   checkoutSchema,
-} from '@/features/checkout/schema/checkoutSchema';
+} from '@/features/order/schema/checkoutSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { mapCartToCheckoutRestaurants } from '@/lib/mappers/checkouts';
-import { CheckoutPayload } from '@/features/checkout/types';
-import { useAddOrderCheckout } from '@/features/checkout/hook/useCheckout';
+import { CheckoutPayload } from '@/features/order/types';
+import { useAddOrderCheckout } from '@/features/order/hook/useCheckout';
 import DeliveryAddressSection from '@/components/checkout/DeliveryAddressSection';
 import { useEffect } from 'react';
 import PaymentMethodSummary from '@/components/checkout/Payment';
-import Loading from '@/loading/Loading';
+import Loading from '@/components/shared/Loading';
 import { useRouter } from 'next/navigation';
 
 type SavedAddress = {
@@ -24,6 +27,7 @@ type SavedAddress = {
 
 const CheckoutPage = () => {
   const { data: cartResponse, isLoading, error } = useGetItemsCart();
+  const { mutate: deleteAllItems } = useDeleteAllItemsCart();
   const { mutate } = useAddOrderCheckout();
 
   const methods = useForm<CheckoutForm>({
@@ -64,6 +68,7 @@ const CheckoutPage = () => {
     mutate(payload, {
       onSuccess: () => {
         router.push('/success');
+        deleteAllItems();
       },
     });
   };

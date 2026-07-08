@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 import { Button } from '../ui/button';
-import { CheckoutForm } from '@/features/checkout/schema/checkoutSchema';
+import { CheckoutForm } from '@/features/order/schema/checkoutSchema';
 
 type PaymentSummaryProps = {
   totalPriceBeforeFee: number;

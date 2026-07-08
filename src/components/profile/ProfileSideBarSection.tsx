@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { authStore } from '@/features/auth/store/auth-store';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import Link from 'next/link';
 
 const ProfileSideBar = ({
   name,
@@ -30,15 +31,21 @@ const ProfileSideBar = ({
         className
       )}
     >
-      <div className='flex items-center gap-4 cursor-pointer'>
+      <Link
+        href={'/profile'}
+        className='flex items-center gap-4 cursor-pointer hover:text-danger'
+      >
         <Image src={avatar} alt='avatar' loading='eager' />
         <p className={`hidden md:block font-semibold leading-lg lg:text-lg `}>
           {name}
         </p>
-      </div>
+      </Link>
       <div className='h-0.5 w-full bg-neutral-200' />
 
-      <div className='flex gap-2 hover:text-danger cursor-pointer'>
+      <Link
+        href={'/profile?page=address'}
+        className='flex gap-2 hover:text-danger cursor-pointer'
+      >
         <svg
           width='15'
           height='19'
@@ -62,8 +69,11 @@ const ProfileSideBar = ({
           />
         </svg>
         <span className='font-medium text-sm'>Delivery Address</span>
-      </div>
-      <div className='flex gap-2 hover:text-danger cursor-pointer'>
+      </Link>
+      <Link
+        href={'/profile?page=orders'}
+        className='flex gap-2 hover:text-danger cursor-pointer'
+      >
         <svg
           width='15'
           height='19'
@@ -80,7 +90,7 @@ const ProfileSideBar = ({
           />
         </svg>
         <span className='font-medium text-sm '>My Orders</span>
-      </div>
+      </Link>
 
       <div
         className='flex gap-2 hover:text-danger cursor-pointer'
@@ -92,6 +102,7 @@ const ProfileSideBar = ({
           viewBox='0 0 19 19'
           fill='none'
           xmlns='http://www.w3.org/2000/svg'
+          className='text-danger'
         >
           <path
             d='M16.3851 13.3333C14.9442 15.8241 12.2511 17.4999 9.16658 17.4999C4.56421 17.4999 0.833252 13.769 0.833252 9.16659C0.833252 4.56421 4.56421 0.833252 9.16658 0.833252C12.2511 0.833252 14.9442 2.50908 16.3851 4.99992M9.16664 12.4999L5.83331 9.16659L9.16664 5.83325M5.83331 9.16659H17.5'
@@ -101,7 +112,7 @@ const ProfileSideBar = ({
             strokeLinejoin='round'
           />
         </svg>
-        <span className='font-medium text-sm '>Log out</span>
+        <span className='font-medium text-sm text-danger'>Log out</span>
       </div>
     </section>
   );

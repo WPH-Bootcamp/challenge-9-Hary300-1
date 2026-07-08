@@ -14,7 +14,7 @@ import {
 import { Field, FieldGroup } from '../ui/field';
 import { Label } from '../ui/label';
 import { useFormContext } from 'react-hook-form';
-import { CheckoutForm } from '@/features/checkout/schema/checkoutSchema';
+import { CheckoutForm } from '@/features/order/schema/checkoutSchema';
 import { Input } from '../ui/input';
 
 const DeliveryAddressSection = () => {
@@ -47,7 +47,11 @@ const DeliveryAddressSection = () => {
       <Dialog>
         <DialogTrigger asChild>
           <div className='max-w-30'>
-            <Button variant='outline' className='text-neutral-950 h-9 lg:h-10'>
+            <Button
+              type='button'
+              variant='outline'
+              className='text-neutral-950 h-9 lg:h-10'
+            >
               Change
             </Button>
           </div>
