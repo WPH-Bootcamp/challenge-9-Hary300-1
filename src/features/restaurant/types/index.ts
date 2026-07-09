@@ -44,7 +44,7 @@ export type GetRestaurantsParams = {
   priceMin?: number;
   priceMax?: number;
   rating?: number;
-  category?: number;
+  category?: string;
   page?: number;
   limit?: number;
 };

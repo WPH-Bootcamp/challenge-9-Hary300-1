@@ -1,9 +1,24 @@
+'use client';
 import { categories } from '@/data/categoryData';
 import Image from 'next/image';
 import { motion } from 'motion/react';
 import { pressable } from '@/motions';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const CategorySection = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const handleCategoryClick = (filter: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (filter) {
+      params.set('filter', filter);
+    } else {
+      params.delete('filter');
+    }
+
+    router.push(`/category?${params.toString()}`);
+  };
   return (
     <section
       id='home-category'
@@ -13,6 +28,7 @@ const CategorySection = () => {
         <motion.div
           key={category.id}
           className='flex flex-col gap-1 lg:gap-1.5 w-full max-w-29 lg:max-w-40.25 items-center'
+          onClick={() => handleCategoryClick(category.filter)}
           {...pressable}
         >
           <div className='flex justify-center items-center rounded-2xl shadow-[0_0_20px_#CBCACA40] h-25 w-full'>

@@ -30,6 +30,7 @@ const DecIncButton = ({ cartItemId, quantity }: DecIncProps) => {
   return (
     <div className='flex gap-4 items-center'>
       <Button
+        type='button'
         variant='outline'
         onClick={handleDecClick}
         className='w-10 h-10 rounded-full flex justify-center items-center'
@@ -39,6 +40,7 @@ const DecIncButton = ({ cartItemId, quantity }: DecIncProps) => {
       </Button>
       <p className='font-semibold text-lg'>{quantity}</p>
       <Button
+        type='button'
         onClick={handleIncClick}
         className='w-10 h-10 rounded-full flex justify-center items-center'
         disabled={isUpdating || isDeleting}

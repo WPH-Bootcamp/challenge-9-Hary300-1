@@ -20,7 +20,7 @@ const RecommendedSection = () => {
       className='flex flex-col gap-7 lg:gap-8 px-4 lg:px-30 pb-26'
     >
       <div className='flex justify-between'>
-        <h2 className='font-extrabold text-display-xs lg:text-display-md '>
+        <h2 className='font-extrabold text-display-xs lg:text-display-md items-center'>
           Recommended
         </h2>
         <SeeAll />

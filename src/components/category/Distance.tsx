@@ -1,7 +1,6 @@
 'use client';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Star } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 type DistanceProps = {
@@ -10,7 +9,7 @@ type DistanceProps = {
 
 const Distance = ({ onSelect }: DistanceProps) => {
   const searchParams = useSearchParams();
-  const distance = searchParams.get('page') ?? 'nearby';
+  const distance = searchParams.get('filter') ?? '';
   const router = useRouter();
 
   const distances = [
@@ -30,7 +29,7 @@ const Distance = ({ onSelect }: DistanceProps) => {
           setTimeout(() => {
             const params = new URLSearchParams(searchParams.toString());
 
-            params.set('page', value);
+            params.set('filter', value);
 
             router.push(`/category?${params.toString()}`, { scroll: false });
           }, 200);

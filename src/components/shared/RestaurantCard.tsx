@@ -22,12 +22,13 @@ const RestaurantCard = ({
     router.push(`/resto/${restaurantId}`);
   };
   return (
-    <div className='rounded-2xl p-3 w-full flex gap-2 shadow-[0_0_20px_#CBCACA40] items-center'>
+    <div className='rounded-2xl p-3 w-full flex gap-2 lg:p-4 shadow-[0_0_20px_#CBCACA40] items-center'>
       <div className='relative w-22.5 h-22.5 rounded-xl overflow-hidden'>
         <Image
           src={logo}
           alt={`${name} image`}
           fill
+          loading='eager'
           className='object-cover'
           unoptimized
           referrerPolicy='no-referrer'

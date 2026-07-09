@@ -37,7 +37,7 @@ const MyOrdersSection = () => {
       >
         <div className='flex gap-2 lg:gap-3 items-center'>
           <p className='font-bold text-sm lg:text-lg text-black'>Status</p>
-          <div className='overflow-x-auto overflow-y-hidden'>
+          <div className='overflow-x-auto overflow-y-hidden scrollbar-none'>
             <TabsList className='flex gap-2 lg:gap-3'>
               <TabsTrigger value='preparing' variant='red'>
                 Preparing

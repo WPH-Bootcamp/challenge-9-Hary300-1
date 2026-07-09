@@ -20,7 +20,7 @@ export const getRestaurantDetail = async (restaurantId: number) => {
   return data;
 };
 
-export const getRestaurantList = async (params: GetRestaurantsParams) => {
+export const getAllRestaurantList = async (params: GetRestaurantsParams) => {
   const { data } = await api.get<ApiResponse<RestaurantListData>>('/resto', {
     params,
   });

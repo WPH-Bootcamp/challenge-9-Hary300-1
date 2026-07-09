@@ -8,7 +8,7 @@ const SeeAll = () => {
   };
   return (
     <p
-      className='text-primary-100 font-extrabold text-md lg:text-lg cursor-pointer hover:underline'
+      className='text-primary-100 font-extrabold text-md lg:text-lg cursor-pointer hover:underline flex items-center'
       onClick={handleSeeAllClick}
     >
       See All
