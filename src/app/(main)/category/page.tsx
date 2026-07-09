@@ -1,4 +1,5 @@
 import MobileFilter from '@/components/category/MobileFilter';
+import SideBarFilter from '@/components/category/SideBarFilter';
 
 const CategoryPage = () => {
   return (
@@ -7,6 +8,7 @@ const CategoryPage = () => {
         All Restaurant
       </h2>
       <MobileFilter />
+      <SideBarFilter />
     </div>
   );
 };

@@ -5,11 +5,6 @@ import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import MyOrderList from './MyOrderList';
 import { EmptyData } from '@/components/shared/EmptyData';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from '@/components/ui/carousel';
 
 const MyOrdersSection = () => {
   const [status, setStatus] = useState<TransactionStatus>('done');
