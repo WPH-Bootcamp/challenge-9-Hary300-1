@@ -21,8 +21,13 @@ export const getRestaurantDetail = async (restaurantId: number) => {
 };
 
 export const getAllRestaurantList = async (params: GetRestaurantsParams) => {
+  const cleanParams = Object.fromEntries(
+    Object.entries(params).filter(
+      ([_, value]) => value !== undefined && value !== null && value !== ''
+    )
+  );
   const { data } = await api.get<ApiResponse<RestaurantListData>>('/resto', {
-    params,
+    params: cleanParams,
   });
   return data;
 };
