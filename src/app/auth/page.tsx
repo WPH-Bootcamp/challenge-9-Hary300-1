@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
-import AuthPageClient from './authPageClient';
 import Loading from '@/components/shared/Loading';
+import AuthPageClient from './AuthPageClient';
 
 const AuthPage = () => {
   return (
