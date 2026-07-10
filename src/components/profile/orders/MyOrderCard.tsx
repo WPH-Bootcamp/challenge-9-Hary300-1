@@ -1,7 +1,7 @@
 import { Order } from '@/features/order/types';
 import Image from 'next/image';
 import restaurantIcon from '@/assets/icons/restaurant-icon.png';
-import { Button } from '@/components/ui/button';
+import GiveReviewButton from './GiveReviewButton';
 
 type MyOrderCardProps = {
   order: Order;
@@ -11,6 +11,7 @@ const MyOrderCard = ({ order, totalPrice }: MyOrderCardProps) => {
   const restaurants = order.restaurants;
   return restaurants.map((restaurant) => {
     const items = restaurant.items;
+    const menuIds = items.flatMap((item) => item.menuId);
     return (
       <div
         key={restaurant.restaurant.id}
@@ -33,6 +34,7 @@ const MyOrderCard = ({ order, totalPrice }: MyOrderCardProps) => {
               alt='menu image'
               width={80}
               height={80}
+              loading='eager'
               className='w-16 h-16 lg:w-20 lg:h-20 rounded-xl object-center object-cover'
             />
             <div className='flex flex-col '>
@@ -51,9 +53,11 @@ const MyOrderCard = ({ order, totalPrice }: MyOrderCardProps) => {
               Rp{totalPrice.toLocaleString('id-ID')}
             </p>
           </div>
-          <div className='w-full max-w-60'>
-            <Button>Give Review</Button>
-          </div>
+          <GiveReviewButton
+            transactionId={order.transactionId}
+            menuIds={menuIds}
+            restaurantId={restaurant.restaurant.id}
+          />
         </div>
       </div>
     );
