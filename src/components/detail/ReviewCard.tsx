@@ -1,7 +1,7 @@
 import { Review } from '@/features/restaurant/types';
 import { formatDate } from '@/lib/helper/formateDate';
-import { ImageOff, Star } from 'lucide-react';
-import Image from 'next/image';
+import { Star } from 'lucide-react';
+import Avatar from '../shared/Avatar';
 
 const ReviewCard = ({ review }: { review: Review }) => {
   const avatar = review.user.avatar;
@@ -10,21 +10,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
   return (
     <div className='rounded-2xl p-4 gap-4 flex flex-col shadow-[0_0_20px_0_#CBCACA40]'>
       <div className='flex gap-4'>
-        <div className='relative w-14.5 h-14.5'>
-          {avatar ? (
-            <Image
-              src={avatar}
-              alt={review.user.name}
-              fill
-              sizes='58px'
-              className='object-cover'
-            />
-          ) : (
-            <div className='flex justify-center items-center border rounded-full size-14.5'>
-              <ImageOff className='text-neutral-500' />
-            </div>
-          )}
-        </div>
+        <Avatar avatar={avatar} size='lg' />
         <div className='flex flex-col'>
           <p className='font-extrabold text-md lg:text-lg'>
             {review.user.name}

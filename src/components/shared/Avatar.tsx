@@ -12,7 +12,7 @@ const Avatar = ({ avatar, size, className }: AvatarProps) => {
   const sizeStyle = {
     sm: 'size-9',
     md: 'size-10 lg:size-12',
-    lg: 'size-16',
+    lg: 'size-16 size-14.5',
   };
 
   const imageSize = {
