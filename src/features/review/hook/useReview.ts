@@ -1,13 +1,20 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import {
+  useInfiniteQuery,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from '@tanstack/react-query';
 import {
   createNewReview,
   deleteReview,
   editReview,
+  getAllReviewsRestaurant,
   getMyReviews,
 } from '../service/review.service';
 import { toast } from 'sonner';
 import axios from 'axios';
 import { ApiErrorResponse } from '@/types/api.type';
+import { GetAllReviewsRestaurantParams } from '../types';
 
 export const useGetMyReviews = () => {
   return useQuery({
@@ -70,6 +77,21 @@ export const useDeleteReview = () => {
     },
     onError: () => {
       toast.error('Failed to delete review');
+    },
+  });
+};
+
+export const useGetAllReviewsRestaurant = (
+  params: Omit<GetAllReviewsRestaurantParams, 'page'>
+) => {
+  return useInfiniteQuery({
+    queryKey: ['restaurant', 'review', params],
+    queryFn: ({ pageParam }) =>
+      getAllReviewsRestaurant({ ...params, page: pageParam }),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      const { page, totalPages } = lastPage.data.pagination;
+      return page < totalPages ? page + 1 : undefined;
     },
   });
 };

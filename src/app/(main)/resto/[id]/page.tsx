@@ -6,6 +6,7 @@ import ReviewSection from '@/components/detail/ReviewSection';
 import { useRestaurantDetail } from '@/features/restaurant/hook/useRestaurantDetail';
 import Loading from '@/components/shared/Loading';
 import { useParams } from 'next/navigation';
+import { useGetAllReviewsRestaurant } from '@/features/review/hook/useReview';
 
 const RestaurantDetailPage = () => {
   const { id } = useParams();
@@ -36,7 +37,7 @@ const RestaurantDetailPage = () => {
       <div className='h-0.5 w-full bg-neutral-300' />
       <MenuSection restaurantDetail={restaurantDetail} />
       <div className='h-0.5 w-full bg-neutral-300' />
-      <ReviewSection reviewContext={reviewContext} />
+      <ReviewSection restaurantId={Number(id)} />
     </div>
   );
 };

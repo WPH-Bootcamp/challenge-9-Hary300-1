@@ -2,6 +2,8 @@
  * Shared
  ===============*/
 
+import { Pagination } from '@/types/api.type';
+
 export type Menu = {
   id: number;
   foodName: string;
@@ -60,13 +62,6 @@ export type RestaurantListItem = {
   reviewCount: number;
   menuCount: number;
   priceRange: PriceRange;
-};
-
-export type Pagination = {
-  page: number;
-  limit: number;
-  total: number;
-  totalPages: number;
 };
 
 export type RestaurantFilters = {

@@ -1,17 +1,21 @@
-import { Pagination } from '@/features/restaurant/types';
+/**====================
+ * My review
+ =====================*/
 
-export type EditReviewPayload = {
+import { Pagination } from '@/types/api.type';
+
+export type EditMyReviewPayload = {
   reviewId: number;
   restaurantId: number;
   star: number;
   comment: string;
 };
 
-export type DeleteReviewPayload = {
+export type DeleteMyReviewPayload = {
   restaurantId: number;
   reviewId: number;
 };
-// =================
+
 export type ReviewMenu = {
   menuId: number;
   menuName: string;
@@ -27,7 +31,7 @@ export type ReviewRestaurant = {
   logo: string;
 };
 
-export type Review = {
+export type RestaurantReview = {
   id: number;
   star: number;
   comment: string;
@@ -37,7 +41,38 @@ export type Review = {
   menus: ReviewMenu[];
 };
 
-export type GetReviewsData = {
-  reviews: Review[];
+export type GetMyReviewsData = {
+  reviews: RestaurantReview[];
   pagination: Pagination;
+};
+
+/**====================
+ * Restaurant review
+ =====================*/
+
+type ReviewUser = {
+  id: number;
+  name: string;
+  avatar: string | null;
+};
+
+type UserReview = {
+  id: number;
+  star: number;
+  comment: string;
+  transactionId: string;
+  createdAt: string;
+  user: ReviewUser;
+  menus: ReviewMenu[];
+};
+
+export type GetAllReviewsRestaurantData = {
+  reviews: UserReview[];
+  pagination: Pagination;
+};
+
+export type GetAllReviewsRestaurantParams = {
+  restaurantId: number;
+  page?: number;
+  limit?: number;
 };

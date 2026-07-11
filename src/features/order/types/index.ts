@@ -1,4 +1,4 @@
-import { Pagination } from '@/features/restaurant/types';
+import { Pagination } from '@/types/api.type';
 
 export type TransactionStatus =
   | 'preparing'
