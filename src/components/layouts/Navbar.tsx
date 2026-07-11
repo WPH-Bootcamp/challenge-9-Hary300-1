@@ -94,12 +94,16 @@ const Navbar = () => {
         <div className=' flex items-center gap-2 lg:gap-4 w-full max-w-50 lg:max-w-85.5'>
           <Button
             variant={'outline'}
-            className={useLightNavbar ? 'text-neutral-950' : ''}
+            className={useLightNavbar ? 'text-neutral-950' : 'text-white'}
             onClick={handleSignInClick}
           >
             Sign In
           </Button>
-          <Button variant={'secondary'} onClick={handleSignUpClick}>
+          <Button
+            variant={'secondary'}
+            onClick={handleSignUpClick}
+            className={useLightNavbar ? 'bg-primary-100 text-white' : ''}
+          >
             Sing Up
           </Button>
         </div>
