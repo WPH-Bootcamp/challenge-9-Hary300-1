@@ -52,9 +52,10 @@ export const useEditReview = () => {
         queryKey: ['my-reviews'],
       });
       queryClient.invalidateQueries({
-        queryKey: ['restaurant', 'detail', variables.restaurantId],
+        queryKey: ['restaurant', 'review', variables.restaurantId],
       });
     },
+
     onError: () => {
       toast.error('Failed to edit review');
     },
@@ -72,7 +73,7 @@ export const useDeleteReview = () => {
         queryKey: ['my-reviews'],
       });
       queryClient.invalidateQueries({
-        queryKey: ['restaurant', 'detail', variables.restaurantId],
+        queryKey: ['restaurant', 'review', variables.restaurantId],
       });
     },
     onError: () => {
@@ -85,7 +86,7 @@ export const useGetAllReviewsRestaurant = (
   params: Omit<GetAllReviewsRestaurantParams, 'page'>
 ) => {
   return useInfiniteQuery({
-    queryKey: ['restaurant', 'review', params],
+    queryKey: ['restaurant', 'review', params.restaurantId, params.limit],
     queryFn: ({ pageParam }) =>
       getAllReviewsRestaurant({ ...params, page: pageParam }),
     initialPageParam: 1,
