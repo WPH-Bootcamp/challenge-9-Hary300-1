@@ -10,9 +10,9 @@ import {
   ReviewFormBody,
   reviewFormSchema,
 } from '@/features/review/schema/reviewSchema';
-import { Review } from '@/features/review/types';
+
 import { Button } from '../ui/button';
-import { Edit, Trash2Icon } from 'lucide-react';
+import { Edit } from 'lucide-react';
 
 type EditReviewProps = {
   restaurantId: number;

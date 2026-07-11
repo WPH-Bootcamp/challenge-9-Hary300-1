@@ -6,8 +6,8 @@ import { useState } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
-  CreateReviewBody,
-  createReviewSchema,
+  ReviewFormBody,
+  reviewFormSchema,
 } from '@/features/review/schema/reviewSchema';
 import { useCreateNewReview } from '@/features/review/hook/useReview';
 
@@ -25,15 +25,12 @@ const GiveReviewButton = ({
   const [open, setOpen] = useState(false);
   const { mutate } = useCreateNewReview();
 
-  const form = useForm<CreateReviewBody>({
+  const form = useForm<ReviewFormBody>({
     defaultValues: {
-      transactionId,
-      restaurantId,
       star: 0,
       comment: '',
-      menuIds,
     },
-    resolver: zodResolver(createReviewSchema),
+    resolver: zodResolver(reviewFormSchema),
   });
 
   const rating = useWatch({
@@ -41,8 +38,9 @@ const GiveReviewButton = ({
     name: 'star',
   });
 
-  const onSubmit = (data: CreateReviewBody) => {
-    mutate(data, {
+  const onSubmit = (data: ReviewFormBody) => {
+    const payload = { ...data, transactionId, restaurantId, menuIds };
+    mutate(payload, {
       onSuccess: () => setOpen(false),
     });
   };
