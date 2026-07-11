@@ -22,7 +22,7 @@ const CategorySection = () => {
   return (
     <section
       id='home-category'
-      className='flex flex-wrap justify-center gap-5 xl:gap-[46.8px] px-4 lg:px-30 cursor-pointer'
+      className='flex flex-wrap justify-center xl:justify-between gap-5 xl:gap-0 px-4 lg:px-30 cursor-pointer'
     >
       {categories.map((category) => (
         <motion.div

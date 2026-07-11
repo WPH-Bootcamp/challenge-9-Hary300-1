@@ -1,17 +1,24 @@
+'use client';
 import { Order } from '@/features/order/types';
 import Image from 'next/image';
 import restaurantIcon from '@/assets/icons/restaurant-icon.png';
 import GiveReviewButton from './GiveReviewButton';
+import { useRouter } from 'next/navigation';
 
 type MyOrderCardProps = {
   order: Order;
   totalPrice: number;
 };
 const MyOrderCard = ({ order, totalPrice }: MyOrderCardProps) => {
+  const router = useRouter();
   const restaurants = order.restaurants;
+  const handleRestaurantClick = (restaurantId: number) => {
+    router.push(`/resto/${restaurantId}`);
+  };
   return restaurants.map((restaurant) => {
     const items = restaurant.items;
     const menuIds = items.flatMap((item) => item.menuId);
+
     return (
       <div
         key={restaurant.restaurant.id}
@@ -23,7 +30,10 @@ const MyOrderCard = ({ order, totalPrice }: MyOrderCardProps) => {
             alt='restaurant icon'
             className='w-8 h-8'
           />
-          <p className='font-bold text-sm lg:text-lg'>
+          <p
+            className='font-bold text-sm lg:text-lg cursor-pointer hover:underline'
+            onClick={() => handleRestaurantClick(restaurant.restaurant.id)}
+          >
             {restaurant.restaurant.name}
           </p>
         </div>
@@ -38,7 +48,7 @@ const MyOrderCard = ({ order, totalPrice }: MyOrderCardProps) => {
               className='w-16 h-16 lg:w-20 lg:h-20 rounded-xl object-center object-cover'
             />
             <div className='flex flex-col '>
-              <p className='font-medium text-sm lg:text-md'>{item.menuName}</p>
+              <p className='font-medium text-sm lg:text-md '>{item.menuName}</p>
               <p className='font-extrabold text-md'>
                 {item.quantity} x {item.price}
               </p>
