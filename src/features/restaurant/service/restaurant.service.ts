@@ -40,3 +40,33 @@ export const searchRestaurant = async (params: SearchRestaurantParams) => {
   );
   return data;
 };
+
+export type GetNearbyRestaurantsParams = {
+  range?: number;
+  limit?: number;
+};
+
+export const getNearbyRestaurants = async (
+  params: GetNearbyRestaurantsParams
+) => {
+  const { data } = await api.get<ApiResponse<RestaurantListData>>(
+    '/resto/nearby',
+    { params }
+  );
+  return data;
+};
+
+export type GetBestSellerRestaurantsParams = {
+  page?: number;
+  limit?: number;
+};
+
+export const getBestSellerRestaurants = async (
+  params: GetBestSellerRestaurantsParams
+) => {
+  const { data } = await api.get<ApiResponse<RestaurantListData>>(
+    '/resto/best-seller',
+    { params }
+  );
+  return data;
+};

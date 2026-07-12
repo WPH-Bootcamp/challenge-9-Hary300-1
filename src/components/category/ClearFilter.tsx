@@ -7,7 +7,7 @@ const ClearFilter = () => {
   const router = useRouter();
 
   const handleClearFilterClick = () => {
-    router.push('/category', {
+    router.push('/resto', {
       scroll: false,
     });
   };

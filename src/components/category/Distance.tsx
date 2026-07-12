@@ -9,7 +9,7 @@ type DistanceProps = {
 
 const Distance = ({ onSelect }: DistanceProps) => {
   const searchParams = useSearchParams();
-  const distance = searchParams.get('filter') ?? '';
+  const distance = searchParams.get('distance') ?? '';
   const router = useRouter();
 
   const distances = [
@@ -29,7 +29,7 @@ const Distance = ({ onSelect }: DistanceProps) => {
           setTimeout(() => {
             const params = new URLSearchParams(searchParams.toString());
 
-            params.set('filter', value);
+            params.set('distance', value);
 
             router.push(`/resto?${params.toString()}`, { scroll: false });
           }, 200);

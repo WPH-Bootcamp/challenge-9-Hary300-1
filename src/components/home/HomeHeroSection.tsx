@@ -45,7 +45,7 @@ const HomeHeroSection = () => {
           <input
             type='text'
             {...register('search')}
-            placeholder="Type the restaurants' name"
+            placeholder="Type the restaurant's name"
             className='w-full rounded-full py-2 px-4 bg-white placeholder:text-neutral-600 placeholder:text-sm lg:placeholder:text-md pl-12.5 outline-0 focus:placeholder:opacity-0'
           />
           <Search className='size-5 absolute top-1/2 -translate-y-1/2 left-6 text-neutral-500' />

@@ -10,7 +10,8 @@ import { getAllRestaurantList } from '../service/restaurant.service';
 // };
 
 export const useGetAllRestaurantList = (
-  params: Omit<GetRestaurantsParams, 'page'>
+  params: Omit<GetRestaurantsParams, 'page'>,
+  enabled = true
 ) => {
   return useInfiniteQuery({
     queryKey: ['restaurant', params],
@@ -22,5 +23,6 @@ export const useGetAllRestaurantList = (
       const { page, totalPages } = lastPage.data.pagination;
       return page < totalPages ? page + 1 : undefined;
     },
+    enabled,
   });
 };
