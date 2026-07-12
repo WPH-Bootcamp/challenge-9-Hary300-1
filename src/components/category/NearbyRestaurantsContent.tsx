@@ -4,13 +4,13 @@ import CategoryGrid from './CategoryGrid';
 import { EmptyData } from '../shared/EmptyData';
 import { useGetNearbyRestaurant } from '@/features/restaurant/hook/useGetNearbyRestaurant';
 import Loading from '../shared/Loading';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 const NearbyRestaurantsContent = () => {
-  const [coords, setCoords] = useState<{
-    latitude: number;
-    longitude: number;
-  } | null>(null);
+  // const [coords, setCoords] = useState<{
+  //   latitude: number;
+  //   longitude: number;
+  // } | null>(null);
 
   const searchParams = useSearchParams();
   const nearbyQuery = {
