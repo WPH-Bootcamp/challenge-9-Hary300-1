@@ -25,7 +25,7 @@ const AuthPageClient = () => {
 
   return (
     <div className='flex'>
-      <div className='hidden lg:block lg:w-1/2 h-screen overflow-hidden relative'>
+      <div className='hidden lg:block lg:w-1/2 min-h-screen overflow-hidden relative'>
         <Image
           src={authImage}
           alt='burger on the tray'
